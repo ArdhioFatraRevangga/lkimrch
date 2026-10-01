@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function Home() {
   // Daftar gambar untuk slider
@@ -13,6 +13,22 @@ export default function Home() {
 
   // State untuk melacak gambar mana yang sedang aktif
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // --- Fitur Video ---
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+  // -------------------
 
   // Fungsi ke gambar sebelumnya
   const prevSlide = () => {
@@ -34,15 +50,33 @@ export default function Home() {
       {/* Hero Section */}
 
       {/* 1. Video Banner */}
-      <div className="w-full h-[550px] md:h-[750px] mb-4 relative overflow-hidden bg-gray-900">
+      <div className="w-full h-[550px] md:h-[600px] mb-4 relative overflow-hidden bg-gray-900 group">
         <video
-          src="/assets/banner-video.mp4"
+          ref={videoRef}
+          src="/assets/banner-produksi.mp4"
           autoPlay
           loop
           muted
           playsInline
           className="w-full h-full object-cover"
         />
+        
+        {/* Tombol Play/Pause */}
+        <button
+          onClick={togglePlay}
+          className="absolute bottom-6 right-6 md:bottom-10 md:right-10 bg-black/40 hover:bg-black/80 text-white p-3 md:p-4 rounded-full transition-all z-10 opacity-70 group-hover:opacity-100 shadow-lg backdrop-blur-sm"
+          aria-label={isPlaying ? "Pause Video" : "Play Video"}
+        >
+          {isPlaying ? (
+            <svg className="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
       </div>
 
       {/* Announcement Section */}
@@ -53,17 +87,28 @@ export default function Home() {
         <p className="text-lg md:text-xl font-bold font-serif leading-snug">
           Belanja langsung melalui website resmi <br className="hidden md:block" />
           LKI Merch jauh lebih hemat & murah dibanding di Online Shop lain!<br className="hidden md:block" />
-          
         </p>
       </div>
 
-      {/* 2. Banner Slider */}
+      {/* 2. Banner Slider (Diperbarui dengan animasi geser halus) */}
       <div className="w-full h-[400px] md:h-[600px] mb-8 md:mb-12 relative group overflow-hidden bg-gray-100">
-        <img
-          src={slides[currentIndex]}
-          alt={`Banner LKI ${currentIndex + 1}`}
-          className="w-full h-full object-cover transition-all duration-500 ease-in-out"
-        />
+        
+        {/* Container untuk semua gambar (berjajar ke samping dan digeser) */}
+        <div 
+          className="flex w-full h-full transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {slides.map((slide, index) => (
+            <img
+              key={index}
+              src={slide}
+              alt={`Banner LKI ${index + 1}`}
+              className="w-full h-full object-cover flex-shrink-0"
+            />
+          ))}
+        </div>
+
+        {/* Panah Kiri */}
         <button
           onClick={prevSlide}
           className="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-2 md:p-3 rounded-full transition opacity-75 group-hover:opacity-100 z-10"
@@ -72,6 +117,8 @@ export default function Home() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
+
+        {/* Panah Kanan */}
         <button
           onClick={nextSlide}
           className="absolute top-1/2 right-4 md:right-8 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-2 md:p-3 rounded-full transition opacity-75 group-hover:opacity-100 z-10"
@@ -80,19 +127,22 @@ export default function Home() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
           </svg>
         </button>
+
+        {/* Indikator Titik */}
         <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
           {slides.map((_, slideIndex) => (
             <button
               key={slideIndex}
               onClick={() => setCurrentIndex(slideIndex)}
-              className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all ${currentIndex === slideIndex ? "bg-white scale-125" : "bg-white/50 hover:bg-white/80"
-                }`}
+              className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                currentIndex === slideIndex ? "bg-white scale-125" : "bg-white/50 hover:bg-white/80"
+              }`}
             />
           ))}
         </div>
       </div>
 
-    {/* --- KATEGORI: Best Seller --- */}
+      {/* --- KATEGORI: Best Seller --- */}
       <div className="px-4 md:px-8 mb-4">
         <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">Best Seller</h3>
       </div>
@@ -100,62 +150,69 @@ export default function Home() {
       {/* Grid Layout untuk Best Seller */}
       {/* Di HP: 2 Kolom, Di PC: 3 Kolom */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
-        
         {/* Kotak 1 */}
-        <div className="bg-gray-200 aspect-[3/4] md:aspect-square"></div>
-        
+        <div className="bg-gray-200 aspect-[3/4] md:aspect-square overflow-hidden rounded-sm">
+          <img 
+            src="/assets/TS-harder.png" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
         {/* Kotak 2 */}
-        <div className="bg-gray-200 aspect-[3/4] md:aspect-square"></div>
-        
+        <div className="bg-gray-200 aspect-[3/4] md:aspect-square overflow-hidden rounded-sm">
+          <img 
+            src="/assets/TS-strager.png" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
         {/* Kotak 3 (Khusus kotak ini, di HP akan memanjang 2 kolom) */}
-        <div className="bg-gray-200 aspect-[21/9] md:aspect-square col-span-2 md:col-span-1"></div>
-        
+        <div className="bg-gray-200 aspect-[3/4] md:aspect-square col-span-2 md:col-span-1 overflow-hidden rounded-sm">
+          <img 
+            src="/assets/LS-jersey-bast.png" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
       </div>
 
-     {/* --- KATEGORI: T-Shirt --- */}
+      {/* --- KATEGORI: T-Shirt --- */}
       <div className="px-4 md:px-8 mb-4">
         <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">T-Shirt</h3>
       </div>
       {/* Grid 4 Kolom dengan Foto */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-4 md:mb-6">
-        
         {/* Foto 1 */}
         <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
           <img 
-            src="/assets/TS_BUNNY_GRY.png" 
+            src="/assets/TS-harder.png" 
             alt="T-Shirt Bunny Grey" 
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
-        
         {/* Foto 2 */}
         <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
           <img 
-            src="/assets/TS_CLIGHTER.png" 
+            src="/assets/TS-strager.png" 
             alt="T-Shirt Lighter" 
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
-        
         {/* Foto 3 */}
         <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
           <img 
-            src="/assets/TS-GUND-BLCK.png" 
+            src="/assets/LS-jersey-bast.png" 
             alt="T-Shirt Gundam Black" 
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
-        
         {/* Foto 4 */}
         <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
           <img 
-            src="/assets/TS-MUSC.png" 
+            src="/assets/TS-musc.png" 
             alt="T-Shirt Muscle" 
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
-
       </div>
+      
       {/* Grid 2 Kolom Besar */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
         <div className="bg-gray-200 aspect-[4/3]"></div>
@@ -166,13 +223,42 @@ export default function Home() {
       <div className="px-4 md:px-8 mb-4">
         <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">Jersey</h3>
       </div>
-      {/* Grid 4 Kolom */}
+      {/* Grid 4 Kolom dengan Foto */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-4 md:mb-6">
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
+        {/* Foto 1 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-harder.png" 
+            alt="T-Shirt Bunny Grey" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        {/* Foto 2 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-strager.png" 
+            alt="T-Shirt Lighter" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        {/* Foto 3 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/LS-jersey-bast.png" 
+            alt="T-Shirt Gundam Black" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        {/* Foto 4 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-musc.png" 
+            alt="T-Shirt Muscle" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
       </div>
+      
       {/* Grid 2 Kolom Besar */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
         <div className="bg-gray-200 aspect-[4/3]"></div>
@@ -181,14 +267,42 @@ export default function Home() {
 
       {/* --- KATEGORI: T-Shirt Band / Jersey --- */}
       <div className="px-4 md:px-8 mb-4">
-        <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">T-Shirt Band / Jersey</h3>
+        <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">T-Shirt Band / Jersey </h3>
       </div>
-      {/* Grid 4 Kolom */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-12 md:mb-16">
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
+      {/* Grid 4 Kolom dengan Foto */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-4 md:mb-6">
+        {/* Foto 1 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-harder.png" 
+            alt="T-Shirt Bunny Grey" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        {/* Foto 2 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-strager.png" 
+            alt="T-Shirt Lighter" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        {/* Foto 3 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/LS-jersey-bast.png" 
+            alt="T-Shirt Gundam Black" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        {/* Foto 4 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-musc.png" 
+            alt="T-Shirt Muscle" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
       </div>
 
       {/* --- INSTAGRAM FEED SECTION --- */}
