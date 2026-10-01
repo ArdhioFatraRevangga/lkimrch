@@ -112,16 +112,49 @@ export default function Home() {
         
       </div>
 
-      {/* --- KATEGORI: T-Shirt --- */}
+     {/* --- KATEGORI: T-Shirt --- */}
       <div className="px-4 md:px-8 mb-4">
         <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">T-Shirt</h3>
       </div>
-      {/* Grid 4 Kolom */}
+      {/* Grid 4 Kolom dengan Foto */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-4 md:mb-6">
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
-        <div className="bg-gray-200 aspect-[3/4]"></div>
+        
+        {/* Foto 1 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS_BUNNY_GRY.png" 
+            alt="T-Shirt Bunny Grey" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+        {/* Foto 2 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS_CLIGHTER.png" 
+            alt="T-Shirt Lighter" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+        {/* Foto 3 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-GUND-BLCK.png" 
+            alt="T-Shirt Gundam Black" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+        {/* Foto 4 */}
+        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+          <img 
+            src="/assets/TS-MUSC.png" 
+            alt="T-Shirt Muscle" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+
       </div>
       {/* Grid 2 Kolom Besar */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
