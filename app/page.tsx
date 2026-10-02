@@ -53,7 +53,7 @@ export default function Home() {
       <div className="w-full h-[550px] md:h-[600px] mb-4 relative overflow-hidden bg-gray-900 group">
         <video
           ref={videoRef}
-          src="/assets/banner-produksi.mp4"
+          src="/assets/IMG_0424.mp4"
           autoPlay
           loop
           muted
@@ -149,27 +149,47 @@ export default function Home() {
       
       {/* Grid Layout untuk Best Seller */}
       {/* Di HP: 2 Kolom, Di PC: 3 Kolom */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-8 px-4 md:px-8 mb-8 md:mb-12">
         {/* Kotak 1 */}
-        <div className="bg-gray-200 aspect-[3/4] md:aspect-square overflow-hidden rounded-sm">
-          <img 
-            src="/assets/TS-harder.png" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="bg-gray-200 aspect-[3/4] md:aspect-square overflow-hidden rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-harder.png" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">T-Shirt Bunny Grey</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Kotak 2 */}
-        <div className="bg-gray-200 aspect-[3/4] md:aspect-square overflow-hidden rounded-sm">
-          <img 
-            src="/assets/TS-strager.png" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="bg-gray-200 aspect-[3/4] md:aspect-square overflow-hidden rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-strager.png" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">T-Shirt Lighter</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Kotak 3 (Khusus kotak ini, di HP akan memanjang 2 kolom) */}
-        <div className="bg-gray-200 aspect-[3/4] md:aspect-square col-span-2 md:col-span-1 overflow-hidden rounded-sm">
-          <img 
-            src="/assets/LS-jersey-bast.png" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group col-span-2 md:col-span-1">
+          <div className="bg-gray-200 aspect-[3/4] md:aspect-square overflow-hidden rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/LS-jersey-bast.png" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jersey Bast</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
       </div>
 
@@ -177,132 +197,365 @@ export default function Home() {
       <div className="px-4 md:px-8 mb-4">
         <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">T-Shirt</h3>
       </div>
+      
       {/* Grid 4 Kolom dengan Foto */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-4 md:mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-8 px-4 md:px-8 mb-4 md:mb-6">
         {/* Foto 1 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-harder.png" 
-            alt="T-Shirt Bunny Grey" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-harder.png" 
+              alt="T-Shirt Bunny Grey" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">T-Shirt Bunny Grey</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 2 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-strager.png" 
-            alt="T-Shirt Lighter" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-strager.png" 
+              alt="T-Shirt Lighter" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">T-Shirt Lighter</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 3 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/LS-jersey-bast.png" 
-            alt="T-Shirt Gundam Black" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/LS-jersey-bast.png" 
+              alt="T-Shirt Gundam Black" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">T-Shirt Gundam</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 4 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-musc.png" 
-            alt="T-Shirt Muscle" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-musc.png" 
+              alt="T-Shirt Muscle" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">T-Shirt Muscle</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
       </div>
       
-      {/* Grid 2 Kolom Besar */}
+      {/* --- Judul Preview Jersey --- */}
+      <div className="px-4 md:px-8 mb-4">
+        <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">Preview Jersey</h3>
+      </div>
+
+  {/* Grid bawah T-shirt 2 Kolom Besar */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
-        <div className="bg-gray-200 aspect-[4/3]"></div>
-        <div className="bg-gray-200 aspect-[4/3]"></div>
+        
+        {/* Foto Besar 1 */}
+        <div className="bg-gray-200 aspect-[4/3] overflow-hidden rounded-sm">
+          <img 
+            src="/assets/wa1.jpeg" 
+            alt="Banner Promo 1" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+        {/* Foto Besar 2 */}
+        <div className="bg-gray-200 aspect-[4/3] overflow-hidden rounded-sm">
+          <img 
+            src="/assets/wa2.jpeg" 
+            alt="Banner Promo 2" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
       </div>
 
       {/* --- KATEGORI: Jersey --- */}
       <div className="px-4 md:px-8 mb-4">
         <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">Jersey</h3>
       </div>
-      {/* Grid 4 Kolom dengan Foto */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-4 md:mb-6">
+      
+      {/* Grid 4 Kolom dengan Foto & Teks */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-8 px-4 md:px-8 mb-4 md:mb-6">
+        
         {/* Foto 1 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-harder.png" 
-            alt="T-Shirt Bunny Grey" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-harder.png" 
+              alt="Jersey Bunny Grey" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jersey Bunny Grey</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 2 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-strager.png" 
-            alt="T-Shirt Lighter" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-strager.png" 
+              alt="Jersey Lighter" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jersey Lighter</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 3 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/LS-jersey-bast.png" 
-            alt="T-Shirt Gundam Black" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/LS-jersey-bast.png" 
+              alt="Jersey Gundam Black" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jersey Gundam</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 4 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-musc.png" 
-            alt="T-Shirt Muscle" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-musc.png" 
+              alt="Jersey Muscle" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jersey Muscle</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+
       </div>
       
-      {/* Grid 2 Kolom Besar */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
-        <div className="bg-gray-200 aspect-[4/3]"></div>
-        <div className="bg-gray-200 aspect-[4/3]"></div>
+      {/* Grid di bawah jersey 2 Kolom Besar */}
+      {/* --- Judul Preview T-shirt (band) --- */}
+      <div className="px-4 md:px-8 mb-4">
+        <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">Preview T-Shirt band</h3>
       </div>
 
-      {/* --- KATEGORI: T-Shirt Band / Jersey --- */}
+      {/* Grid 2 Kolom Besar */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
+        
+        {/* Foto Besar 1 */}
+        <div className="bg-gray-200 aspect-[4/3] overflow-hidden rounded-sm">
+          <img 
+            src="/assets/wa4.jpeg" 
+            alt="Preview Jersey 1" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+        {/* Foto Besar 2 */}
+        <div className="bg-gray-200 aspect-[4/3] overflow-hidden rounded-sm">
+          <img 
+            src="/assets/wa5.jpeg" 
+            alt="Preview Jersey 2" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
+      </div>
+
+
+     {/* --- KATEGORI: T-Shirt Band / Jersey --- */}
       <div className="px-4 md:px-8 mb-4">
         <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">T-Shirt Band / Jersey </h3>
       </div>
-      {/* Grid 4 Kolom dengan Foto */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 px-4 md:px-8 mb-4 md:mb-6">
+      
+      {/* Grid 4 Kolom dengan Foto & Teks */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-8 px-4 md:px-8 mb-4 md:mb-6">
+        
         {/* Foto 1 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-harder.png" 
-            alt="T-Shirt Bunny Grey" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-harder.png" 
+              alt="Band Shirt Bunny Grey" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Band Shirt Bunny</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 2 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/TS-strager.png" 
-            alt="T-Shirt Lighter" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-strager.png" 
+              alt="Band Shirt Lighter" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Band Shirt Lighter</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 3 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
-          <img 
-            src="/assets/LS-jersey-bast.png" 
-            alt="T-Shirt Gundam Black" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          />
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/LS-jersey-bast.png" 
+              alt="Band Shirt Gundam Black" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Band Shirt Gundam</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
         </div>
+        
         {/* Foto 4 */}
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/TS-musc.png" 
+              alt="Band Shirt Muscle" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Band Shirt Muscle</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
+        </div>
+
+      </div>
+
+
+      {/* --- KATEGORI: Jacket --- */}
+      <div className="px-4 md:px-8 mb-4">
+        <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">Jacket</h3>
+      </div>
+      
+      {/* Grid 4 Kolom dengan Foto & Teks */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-4 md:gap-y-8 px-4 md:px-8 mb-4 md:mb-6">
+        
+        {/* Foto 1 */}
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/wa4.jpeg" 
+              alt="Jacket Style 1" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jacket Series 1</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
+        </div>
+        
+        {/* Foto 2 */}
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/wa5.jpeg" 
+              alt="Jacket Style 2" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jacket Series 2</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
+        </div>
+        
+        {/* Foto 3 */}
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/wa4.jpeg" 
+              alt="Jacket Style 3" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jacket Series 3</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
+        </div>
+        
+        {/* Foto 4 */}
+        <div className="flex flex-col group">
+          <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm mb-3 md:mb-4">
+            <img 
+              src="/assets/wa5.jpeg" 
+              alt="Jacket Style 4" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="text-center">
+            <h4 className="font-bold text-sm md:text-base uppercase tracking-wide">Jacket Series 4</h4>
+            <p className="text-sm md:text-base text-gray-700 mt-1">Rp. 0</p>
+          </div>
+        </div>
+
+      </div>
+      
+      {/* --- Judul Preview jacket --- */}
+      <div className="px-4 md:px-8 mb-4">
+        <h3 className="text-lg md:text-xl font-serif font-bold border-b border-black inline-block pb-1">Preview Jacket</h3>
+      </div>
+
+  {/* Grid bawah T-shirt 2 Kolom Besar */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 px-4 md:px-8 mb-8 md:mb-12">
+        
+        {/* Foto Besar 1 */}
+        <div className="bg-gray-200 aspect-[4/3] overflow-hidden rounded-sm">
           <img 
-            src="/assets/TS-musc.png" 
-            alt="T-Shirt Muscle" 
+            src="/assets/wa1.jpeg" 
+            alt="Banner Promo 1" 
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
+        
+        {/* Foto Besar 2 */}
+        <div className="bg-gray-200 aspect-[4/3] overflow-hidden rounded-sm">
+          <img 
+            src="/assets/wa2.jpeg" 
+            alt="Banner Promo 2" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        
       </div>
 
       {/* --- INSTAGRAM FEED SECTION --- */}
