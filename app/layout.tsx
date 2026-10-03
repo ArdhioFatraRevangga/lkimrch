@@ -22,11 +22,10 @@ const jacques = Jacques_Francois_Shadow({
 });
 
 export const metadata: Metadata = {
-  title: "LKI Merchandise", // Diubah agar sesuai nama tokomu
+  title: "LKI Merchandise", 
   description: "Legacy Keeps Inspiring",
 };
 
-// Mengubah tipe prop children menjadi standar React
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,15 +33,25 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="id" // Diubah ke 'id' karena bahasa website adalah Indonesia
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {/* Navbar dipasang di sini */}
         <Navbar />
         
-        {/* Sisa konten halaman */}
-        {children}
+        {/* Sisa konten halaman (flex-grow akan mendorong kotak hitam ke paling bawah) */}
+        <main className="flex-grow">
+          {children}
+        </main>
+
+        {/* Kotak Hitam Global (Muncul di semua halaman) */}
+        <div className="bg-black text-white text-center py-4 mt-auto">
+          <p className="text-xs md:text-sm tracking-widest text-gray-400">
+            © {new Date().getFullYear()} LKI Merchandise
+          </p>
+        </div>
+        
       </body>
     </html>
   );

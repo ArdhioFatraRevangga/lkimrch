@@ -613,12 +613,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
-      {/* Bottom Black Bar */}
-      <div className="bg-black text-white text-center py-3 md:py-4">
-        <p className="text-xs md:text-sm tracking-widest">LKI Merchandise</p>
-      </div>
-
     </div>
   );
 }
